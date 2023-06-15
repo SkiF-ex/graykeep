@@ -1,0 +1,21 @@
+.root {
+    height: 70px;
+    background-color: #0a0a0adc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #cb8b3775;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.labelContainer {
+    display: flex;
+    align-items: center;
+    margin-left: -5px;
+}
+
+.label {
+    color: #7c8291;
+}

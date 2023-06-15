@@ -1,0 +1,20 @@
+body {
+    background-color: #1b2337;
+    position: relative;
+    margin: 0;
+}
+
+/* Стили для скрытия фона и размера полосы прокрутки */
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(75, 75, 75, 0.5);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}

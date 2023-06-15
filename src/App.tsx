@@ -1,15 +1,28 @@
-import React from "react";
-import {createRoot} from "react-dom/client";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { createTheme, ThemeProvider } from '@mui/material';
 
-const Index = () => {
+import { Root } from 'components/Root';
+
+const theme = createTheme({
+    palette: {
+        mode: 'dark',
+        secondary: {
+            main: '#cb8b37',
+        },
+        text: {
+            primary: '#7c8291'
+        }
+    }
+})
+
+const App = () => {
     return (
-        <>
-            <div>
-                Hello, World!
-            </div>
-        </>
+        <ThemeProvider theme={theme}>
+            <Root />
+        </ThemeProvider>
     )
 }
 
 const root = createRoot(document.getElementById('root'));
-root.render(<Index />);
+root.render(<App />);
