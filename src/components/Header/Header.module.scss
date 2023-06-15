@@ -1,0 +1,31 @@
+.root {
+    padding-top: 40px;
+    margin: 0 20px;
+    width: 1042px;
+    position: relative;
+    height: 120px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.imageBox {
+    height: 89px;
+    width: 100px;
+}
+
+.wiki {
+    position: absolute;
+    display: block;
+    height: 100px;
+    width: 89px;
+}
+
+.title {
+    color: rgb(230, 230, 230);
+}
+
+.left {
+    display: flex;
+    align-items: baseline;
+}

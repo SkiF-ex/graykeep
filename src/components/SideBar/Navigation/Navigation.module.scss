@@ -1,0 +1,26 @@
+.root {
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    background-color: #161a25f2;
+    padding: 0 30px;
+    margin-left: -160px;
+    transition: 0.5s;
+    z-index: 3;
+}
+
+.active {
+    margin-left: 0;
+    transition: 0.5s;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.wiki {
+    width: 150px;
+    margin-left: -25px;
+}

@@ -1,0 +1,8 @@
+.unlearned::before {
+    content: '';
+    position: absolute;
+    border-radius: 5px;
+    background-color: rgba(71, 71, 71, 0.486);
+    height: 323px;
+    width: 160px;
+}
