@@ -36,5 +36,5 @@ export const Abilities = () => {
 		)
 	}
 
-	return (data.length > 0 && !loader) && abils();
+	return (data.length && !loader) && abils();
 };
