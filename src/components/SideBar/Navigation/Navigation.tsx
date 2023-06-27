@@ -1,6 +1,5 @@
-import React from 'react';
 import cn from 'classnames';
-import { Button, ButtonBase } from '@mui/material';
+import { Button } from '@mui/material';
 
 import wiki from 'assets/wiki.png';
 

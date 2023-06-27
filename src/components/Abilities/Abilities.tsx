@@ -1,30 +1,40 @@
-import React from 'react';
 import { Grid } from '@mui/material';
-import cn from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useEffect } from 'react';
 
 import { AbilityCard } from './AbilityCard';
-import { ITechTree } from 'types/skills';
+import { IState } from 'types/state';
+import { fetchData } from '../../slice/slice';
 
 import styles from './Abilities.module.scss';
 
-export const Abilities = ({ status, abilities }: { status: boolean, abilities: ITechTree }) => {
-	const getAllTrees = (object: any) => {
-		const treeElements = [];
-		for (const tree in object) {
-			for (const perk in object[tree]) {
-				treeElements.push(<AbilityCard key={perk} status={status} card={object[tree][perk]} />);
-			}
-		}
-		return treeElements;
-	};
+export const Abilities = () => {
+	const dispatch = useDispatch();
+	const data = useSelector((state: IState) => state.redux.data);
+	const loader = useSelector((state: IState) => state.redux.loader);
 
+	useEffect(() => {
+		dispatch(fetchData('') as any);
+	}, [dispatch])
 
-	return (
-		<section className={status ? styles.root : cn(styles.root, styles.unlearned)}>
-			<h2 className={styles.head}>{status ? 'Learned abilities' : 'Unlearned abilities'}</h2>
+	const getAllCards = () => {
+		return data.length > 0 && data.map((item) => {
+			return <AbilityCard key={item.name} status={item.status} card={item} />
+		})
+	}
+
+	const abils = () => {
+		return (
+			<section className={styles.root}>
+			<h2 className={styles.head}>Abilities</h2>
 			<Grid wrap='wrap' container spacing={2}>
-				{getAllTrees(abilities)}
+				<CircularProgress sx={loader ? {display: 'block', margin: '20px auto'} : {display: 'none'}}/>
+				{!loader && getAllCards()}
 			</Grid>
 		</section>
-	)
-}
+		)
+	}
+
+	return (data.length > 0 && !loader) && abils();
+};

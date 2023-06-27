@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, Grid, CardMedia, CardContent, Typography, Button, Popover } from '@mui/material';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
@@ -8,21 +7,25 @@ import { switchColor } from 'utils/switchColor';
 import styles from './AbilityCard.module.scss';
 
 export const AbilityCard = ({ card, status }: { card: ITechPerk, status: boolean }) => {
+    const { name, description, image, points } = card;
 
     const pointsTree = (allPoints: any) => {
-        const getPoints = Object.keys(allPoints).map((point) => (
-            <Grid item key={point}>
-                <Grid container alignItems="center" justifyContent="center">
-                    <img src={switchColor(point)} alt={point} />: {allPoints[point]}
+        const getPoints = Object.keys(allPoints).map((point) => {
+            return allPoints[point] ? (
+                <Grid item key={point}>
+                    <Grid container alignItems="center" justifyContent="center">
+                        <img src={switchColor(point)} alt={point} />: {allPoints[point]}
+                    </Grid>
                 </Grid>
-            </Grid>
-        ));
+            ) : ''
+        });
 
         return (
             <Grid
                 container
                 direction="column"
                 alignItems="center"
+                sx={{minHeight: '66px'}}
             >
                 {getPoints}
             </Grid>
@@ -30,11 +33,24 @@ export const AbilityCard = ({ card, status }: { card: ITechPerk, status: boolean
     }
 
     return (
-        <Grid sx={{ justifyContent: 'center' }} item xs={4} md={4} lg={4}>
-            <Card className={status ? '' : styles.unlearned} sx={{ backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid gray', minHeight: '323px' }}>
+        <Grid sx={{ justifyContent: 'center' }} item xs={4} md={2} lg={2} xl={2}>
+            <Card
+                className={status ? '' : styles.unlearned}
+                sx={
+                    {
+                        backgroundColor: 'transparent',
+                        position: 'relative',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        border: '1px solid gray',
+                        minHeight: '323px'
+                    }
+                }
+            >
                 <CardMedia
                     component="img"
-                    image={card.image}
+                    image={image}
                     alt="Butchir"
                     sx={{ height: '80px', width: '80px' }}
                 />
@@ -43,7 +59,7 @@ export const AbilityCard = ({ card, status }: { card: ITechPerk, status: boolean
                         Технология:
                     </Typography>
                     <Typography sx={{ textAlign: 'center' }} variant="body2" color="text.primary">
-                        {card.name}
+                        {name}
                     </Typography>
                     <PopupState variant="popover" popupId="demo-popup-popover">
                         {(popupState) => (
@@ -60,7 +76,7 @@ export const AbilityCard = ({ card, status }: { card: ITechPerk, status: boolean
                                         horizontal: 'center',
                                     }}
                                 >
-                                    <Typography sx={{ p: 2, backgroundColor: '#14161a', width: '400px' }}>{card.description}</Typography>
+                                    <Typography sx={{ p: 2, backgroundColor: '#14161a', width: '400px' }}>{description}</Typography>
                                 </Popover>
                             </>
                         )}
@@ -68,7 +84,8 @@ export const AbilityCard = ({ card, status }: { card: ITechPerk, status: boolean
                     <Typography variant="body2" color="text.primary">
                         Required:
                     </Typography>
-                    {pointsTree(card.points)}
+                    {pointsTree(points)}
+                    <Button sx={{ textTransform: 'none', margin: '20px 0' }} color='primary' variant="outlined">Check</Button>
                 </CardContent>
             </Card>
         </Grid>

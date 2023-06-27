@@ -1,11 +1,6 @@
-export interface ITechTree {
-    [category: string]: {
-        [perk: string]: ITechPerk;
-    };
-}
-
 export interface ITechPerk {
     name: string;
+    tree: string;
     description: string;
     image: string;
     points: {
@@ -13,4 +8,5 @@ export interface ITechPerk {
         green?: number;
         blue?: number;
     };
+    status: boolean;
 }

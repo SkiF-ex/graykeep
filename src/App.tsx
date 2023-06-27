@@ -1,7 +1,8 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { Provider } from 'react-redux';
 
+import { store } from './slice'
 import { Root } from 'components/Root';
 
 const theme = createTheme({
@@ -16,13 +17,14 @@ const theme = createTheme({
     }
 })
 
-const App = () => {
-    return (
+const root = createRoot(
+    document.getElementById('root') as HTMLElement
+);
+
+root.render(
+    <Provider store={store}>
         <ThemeProvider theme={theme}>
             <Root />
         </ThemeProvider>
-    )
-}
-
-const root = createRoot(document.getElementById('root'));
-root.render(<App />);
+    </Provider>
+);
