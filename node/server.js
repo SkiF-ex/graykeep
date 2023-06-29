@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyOarser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const Graykeep = require('./gs');
 
@@ -19,29 +19,27 @@ app.get('/perks', async (req, res) => {
   const tree = req.query.tree;
   const pool = req.query.pool;
 
+  const query = {};
+
+  switch (pool) {
+    case 'all':
+      break;
+    case 'ulearned':
+      query.status = false;
+      break;
+    case 'learned':
+      query.status = true;
+      break;
+    default:
+      break;
+  }
+
+  if (tree && tree !== 'All') {
+    query.tree = tree;
+  }
+
   try {
-    const data = await Graykeep.find();
-
-    let result;
-    switch (pool) {
-      case 'all':
-        result = data;
-        break;
-      case ('ulearned'):
-        result = data.filter((item) => !item.status);
-        break;
-      case ('learned'):
-        result = data.filter((item) => item.status);
-        break;
-      default:
-        result = data;
-        break;
-    }
-
-    if (tree) {
-      result = tree !== 'All' ? result.filter((item) => item.tree === tree) : result;
-    }
-
+    const result = await Graykeep.find(query);
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: 'Server Error' });
@@ -50,9 +48,8 @@ app.get('/perks', async (req, res) => {
 
 app.get('/trees', async (req, res) => {
   try {
-
     const data = await Graykeep.find();
-    const trees = [...new Set(data.map(item => item.tree))];
+    const trees = [...new Set(data.map((item) => item.tree))];
     trees.unshift('All');
 
     res.json(trees);
@@ -61,4 +58,4 @@ app.get('/trees', async (req, res) => {
   }
 });
 
-app.listen(port, () => console.log(`Server runing on port ${port}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));
