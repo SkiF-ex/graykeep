@@ -1,6 +1,5 @@
 'use client'
 
-import { Grid } from '@mui/material';
 import { NextPageContext } from 'next';
 
 import { Abilities } from 'components/Abilities';
