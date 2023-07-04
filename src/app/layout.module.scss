@@ -1,0 +1,25 @@
+.root {
+    position: relative;
+    height: 100%;
+    background-color: #1b2337;
+    margin: 0;
+
+    &::before {
+        content: '';
+        opacity: 40%;
+        background-image: url("../assets/Site-background.webp");
+        background-repeat: no-repeat;
+        width: 100vw;
+        background-size: cover;
+        background-position: 50%;
+        position: fixed;
+        height: 100%;
+        z-index: -2;
+
+    }
+}
+
+.boards {
+    display: flex;
+    justify-content: space-between;
+}

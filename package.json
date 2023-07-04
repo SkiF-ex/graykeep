@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "next": "next dev --port 3000",
     "start": "webpack-dev-server --port 3000",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "build": "webpack --mode production"
@@ -20,12 +21,15 @@
     "classnames": "^2.3.2",
     "lodash": "^4.17.21",
     "material-ui-popup-state": "^5.0.9",
+    "next": "^13.4.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.22.5",
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
+    "@babel/runtime": "^7.22.5",
     "@hookform/resolvers": "^2.9.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/lodash": "^4.14.182",

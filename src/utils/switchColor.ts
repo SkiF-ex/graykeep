@@ -1,12 +1,8 @@
-import red from 'assets/technology/Red_Tech_Symbol.png';
-import blue from 'assets/technology/Blue_Tech_Symbol.png';
-import green from 'assets/technology/Green_Tech_Symbol.png';
-
 export const switchColor = (color: string) => {
     switch (color) {
-        case 'red': return red;
-        case 'blue': return blue;
-        case 'green': return green;
+        case 'red': return 'https://i.ibb.co/zQxMf7X/Red-Tech-Symbol.webp';
+        case 'blue': return 'https://i.ibb.co/N6Wzp1P/Blue-Tech-Symbol.webp';
+        case 'green': return 'https://i.ibb.co/D4fZYBc/Green-Tech-Symbol.webp';
         default: break;
     }
 }

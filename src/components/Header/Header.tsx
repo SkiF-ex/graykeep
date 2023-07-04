@@ -1,7 +1,8 @@
+'use client'
+
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-
-import wiki from 'assets/wiki.png';
+import Image from 'next/image';
 
 import styles from './Header.module.scss';
 
@@ -10,7 +11,7 @@ export const Header = () => {
         <header className={styles.root}>
             <div className={styles.left}>
                 <div className={styles.imageBox}>
-                    <img className={styles.wiki} src={wiki} />
+                    <Image alt='wiki' height='100' width='89' className={styles.wiki} src='/wiki.png' />
                 </div>
                 <h2 className={styles.title}>Graveyard Keeper Storybook</h2>
             </div>

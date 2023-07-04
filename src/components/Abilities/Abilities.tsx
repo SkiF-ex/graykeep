@@ -1,21 +1,24 @@
 import { Grid } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector  } from '../../redux/hooks';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { AbilityCard } from './AbilityCard';
 import { IState } from 'types/state';
-import { fetchData } from '../../slice/slice';
+import { fetchData } from '../../redux/features/slice';
 
 import styles from './Abilities.module.scss';
 
 export const Abilities = () => {
-	const dispatch = useDispatch();
-	const data = useSelector((state: IState) => state.redux.data);
-	const loader = useSelector((state: IState) => state.redux.loader);
+	const dispatch = useAppDispatch();
+	const searchParams = useSearchParams();
+	
+	const data = useAppSelector((state: IState) => state.slice.data);
+	const loader = useAppSelector((state: IState) => state.slice.loader);
 
 	useEffect(() => {
-		dispatch(fetchData('') as any);
+		dispatch(fetchData(searchParams.toString()) as any);
 	}, [dispatch])
 
 	const getAllCards = () => {

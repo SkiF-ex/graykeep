@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import { Button } from '@mui/material';
-
-import wiki from 'assets/wiki.png';
+import Image from 'next/image';
 
 import styles from './Navigation.module.scss';
 
@@ -21,7 +20,7 @@ export const Navigation = ({status} : {status: boolean}) => {
 
     return (
         <div className={status ? cn(styles.root, styles.active) : styles.root}>
-            <img className={styles.wiki} src={wiki} />
+            <Image height={172} alt='wiki' width={150} className={styles.wiki} src='/wiki.png' />
             <nav className={styles.nav}>
                 {buttons.map((item) => NavButton(item.text, item.text))}
             </nav>
