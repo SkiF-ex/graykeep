@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ToggleButtonGroup, ToggleButton, Skeleton } from '@mui/material';
-import { useAppDispatch, useAppSelector  } from '../../../redux/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams, useRouter } from 'next/navigation';
 
 import { IState } from 'types/state';
@@ -11,11 +11,11 @@ import { PointsFilter } from './components/PointsFilter';
 import styles from './Filters.module.scss';
 
 export const Filters = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const searchParams = useSearchParams();
     const router = useRouter();
 
-    const trees = useAppSelector((state: IState) => state.slice.trees);
+    const trees = useSelector((state: IState) => state.redux.trees);
     const [filterTree, setFilterTree] = useState<string>(searchParams.get('tree') || 'All');
     const [pool, setPool] = useState<string>(searchParams.get('pool') || 'All');
 

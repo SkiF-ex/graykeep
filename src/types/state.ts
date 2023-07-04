@@ -7,5 +7,5 @@ export interface IRedux {
 }
 
 export interface IState {
-    slice: IRedux;
+    redux: IRedux;
 }

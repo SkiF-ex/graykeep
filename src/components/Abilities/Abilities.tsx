@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import { useAppDispatch, useAppSelector  } from '../../redux/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -11,11 +11,11 @@ import { fetchData } from '../../redux/features/slice';
 import styles from './Abilities.module.scss';
 
 export const Abilities = () => {
-	const dispatch = useAppDispatch();
+	const dispatch = useDispatch();
 	const searchParams = useSearchParams();
 	
-	const data = useAppSelector((state: IState) => state.slice.data);
-	const loader = useAppSelector((state: IState) => state.slice.loader);
+	const data = useSelector((state: IState) => state.redux.data);
+	const loader = useSelector((state: IState) => state.redux.loader);
 
 	useEffect(() => {
 		dispatch(fetchData(searchParams.toString()) as any);
